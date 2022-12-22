@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta Tags For Seo + Page Optimization -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description" content="Book Store is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Book Store | PRODUCT LISTING</title>
+    <!-- Favicon -->
+
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+
+<!-- START HEADER NAVIGATION -->
+<div th:replace="~{commons/navbar :: topBar}"></div>
+<!-- END HEADER NAVIGATION -->
+
+<!--slider sec strat-->
+<section id="slider-sec" class="slider-sec parallax" style="background: url('/books/asserts/image/banner1.2.jpg');">
+</section>
+<!--slider sec end-->
+
+<!--Product Line Up Start -->
+<div id="book_div" class="product-listing">
+    <div class="container">
+        <div class="row no-gutters">
+
+            <!-- START STICKY NAV -->
+            <div class="col-12 col-lg-4 order-2 order-lg-1 sticky">
+                <div id="product-filter-nav" class="product-filter-nav mb-3">
+                    <div class="product-category m-1">
+                        <h5 class="filter-heading  text-center text-lg-left">Category</h5>
+                        <ul >
+                            <li>
+                                <a th:href="@{/product/listing/bookClass/0}">所有書籍</a>
+                            </li>
+                            <li th:each="bookClazz : ${session.bookClass}">
+                            <a th:href="@{/product/listing/bookClass/}+${bookClazz.bid}">[[${bookClazz.bookClass}]]([[${bookClazz.count}]])</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="product-add mt-4">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <img th:src="@{/asserts/picture/advertisement.jpg}" alt="images">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END STICKY NAV -->
+
+            <!-- START PRODUCT COL 8 -->
+            <div  class="col-md-12 col-lg-8 order-1 order-lg-2">
+                <div  class="row">
+                    <!-- START LISTING HEADING -->
+                    <div class="col-12 product-listing-heading">
+                        <h1 class="heading text-center">產品列表</h1>
+                        <div class="col-12">
+                            <h4 class="d-flex align-items-center m-1 justify-content-end" >篩選</h4>
+                            <div class="row text-right justify-content-end">
+                            <button type="button" class="btn green-color-yellow-gradient-btn border-radius m-1" ><a th:href="@{/product/listing/sort/new}">最新</a></button>
+                            <button type="button" class="btn green-color-yellow-gradient-btn border-radius m-1" ><a th:href="@{/product/listing/sort/hot}">熱銷</a></button>
+                        </div>
+                            <div class="row justify-content-end" >
+                            <select style="font-size: 15px" onchange="window.location=this.value">
+                                <option>價格排序</option>
+                                <option value="http://localhost:8080/books/product/listing/sort/desc">由高到低</option>
+                                <option value="http://localhost:8080/books/product/listing/sort/asc">由低到高</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- END LISTING HEADING -->
+
+                    <!-- START PRODUCT LISTING SECTION -->
+                    <div  class="col-12 product-listing-products">
+                        <!-- START DISPLAY PRODUCT -->
+                        <div class="product-list row" >
+                            <div  th:each="book:${books.records}" class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
+                                <div  class="product-item owl-theme product-listing-carousel owl-carousel">
+                                    <div style="width: 200px;height: 300px" class="item p-item-img">
+                                        <a th:href="@{/product/detail(bid=${book.id})}">
+                                            <img class="p-item-img" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="images">
+
+                                        <div  class="text-center d-flex justify-content-center align-items-center">
+                                            <div  class="listing-cart-icon" >
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                        <div style="width: 200px;height: 300px" class="item p-item-img">
+
+                                        </div>
+                                    </div>
+                                <div class="p-item-detail">
+                                    <a th:href="|@{/product/detail}?bid=${book.id}|"><h4 class="text-center p-item-name">[[${book.bookname}]]</h4></a>
+                                    <p class="text-center p-item-price">[[${book.price}]]</p>
+                                </div>
+                            </div>
+<!--                      分頁列      -->
+<!--                        operate    -->
+                            <div th:style="${operate == null?'visibility:hidden':''}" class="col-12 clearfix d-flex justify-content-center align-content-end">
+                                <div  class="cbp-l-filters-button cbp-1-filters-alignCenter">
+                                    <ul class="pagination">
+                                        <il>
+                                            <div style="height: 40px;width: 350px; display: flex; align-items: center; justify-content: center">
+                                                當前為[[${books.current}]]頁  總計 [[${books.pages}]]頁 共[[${books.total}]]本書</div>
+                                        </il>
+                                        <il>
+                                            <button th:style="${books.current == 1?'visibility:hidden':''}" type="button" class="btn green-color-yellow-gradient-btn"><a th:href="|@{/product/listing/sort/}${operate}?pn=${books.current+1}|"><i class="fa-solid fa-angles-left"></i></a></button>
+                                        </il>
+                                        <il  th:each="num:${#numbers.sequence(1,books.pages)}">
+                                            <button type="button" class="btn green-color-yellow-gradient-btn" ><a th:href="|@{/product/listing/sort/}${operate}?pn=${num}|">[[${num}]]</a></button>
+                                        </il>
+                                        <il>
+                                            <button th:style="${books.current == books.pages?'visibility:hidden':''}" type="button" class="btn green-color-yellow-gradient-btn"><a th:href="|@{/product/listing/sort/}${operate}?pn=${books.current+1}|"><i class="fa-solid fa-angles-right"></i></a></button>
+                                        </il>
+                                    </ul>
+                                </div>
+                            </div>
+<!--                         bookClass  -->
+                            <div th:style="${bid == null ?'visibility:hidden':''}" class="col-12 clearfix d-flex justify-content-center align-content-end">
+                                <div  class="cbp-l-filters-button cbp-1-filters-alignCenter">
+                                    <ul class="pagination">
+                                        <il>
+                                            <div style="height: 40px;width: 350px; display: flex; align-items: center; justify-content: center">
+                                                當前為[[${books.current}]]頁  總計 [[${books.pages}]]頁 共[[${books.total}]]本書</div>
+                                        </il>
+                                        <il>
+                                            <button th:style="${books.current == 1?'visibility:hidden':''}" type="button" class="btn green-color-yellow-gradient-btn"><a th:href="|@{/product/listing/bookClass/}${bid}?pn=${books.current+1}|"><i class="fa-solid fa-angles-left"></i></a></button>
+                                        </il>
+                                        <il  th:each="num:${#numbers.sequence(1,books.pages)}">
+                                            <button type="button" class="btn green-color-yellow-gradient-btn" ><a th:href="|@{/product/listing/bookClass/}${bid}?pn=${num}|">[[${num}]]</a></button>
+                                        </il>
+                                        <il>
+                                            <button th:style="${books.current == books.pages?'visibility:hidden':''}" type="button" class="btn green-color-yellow-gradient-btn"><a th:href="|@{/product/listing/bookClass/}${bid}?pn=${books.current+1}|"><i class="fa-solid fa-angles-right"></i></a></button>
+                                        </il>
+                                    </ul>
+                                </div>
+                            </div>
+<!--                         search  -->
+                            <div th:style="${keyWord == null ?'visibility:hidden':''}" class="col-12 clearfix d-flex justify-content-center align-content-end">
+                                <div  class="cbp-l-filters-button cbp-1-filters-alignCenter">
+                                    <ul class="pagination">
+                                        <il>
+                                            <div style="height: 40px;width: 350px; display: flex; align-items: center; justify-content: center">
+                                                當前為[[${books.current}]]頁  總計 [[${books.pages}]]頁 共[[${books.total}]]本書</div>
+                                        </il>
+                                        <il>
+                                            <button th:style="${books.current == 1?'visibility:hidden':''}" type="button" class="btn green-color-yellow-gradient-btn"><a th:href="|@{/product/listing/search/}${bid}?pn=${books.current+1}|"><i class="fa-solid fa-angles-left"></i></a></button>
+                                        </il>
+                                        <il  th:each="num:${#numbers.sequence(1,books.pages)}">
+                                            <button type="button" class="btn green-color-yellow-gradient-btn" ><a th:href="|@{/product/listing/search/}${bid}?pn=${num}|">[[${num}]]</a></button>
+                                        </il>
+                                        <il>
+                                            <button th:style="${books.current == books.pages?'visibility:hidden':''}" type="button" class="btn green-color-yellow-gradient-btn"><a th:href="|@{/product/listing/search/}${bid}?pn=${books.current+1}|"><i class="fa-solid fa-angles-right"></i></a></button>
+                                        </il>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END DISPLAY PRODUCT -->
+
+                    </div>
+                    <!-- END PRODUCT LISTING SECTION -->
+                </div>
+            </div>
+            <!-- END PRODUCT COL 8 -->
+
+        </div>
+    </div>
+</div>
+<!--Product Line Up End-->
+
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!--START SEARCH AREA-->
+<div th:replace="~{commons/navbar :: searchBox}"></div>
+<!--END SEARCH AREA -->
+
+<!--START Cart Box-->
+<div th:replace="~{commons/navbar :: cartBox}"></div>
+<!--END Cart Box -->
+
+<!-- JavaScript -->
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+</body>
+</html>

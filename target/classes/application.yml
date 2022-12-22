@@ -1,0 +1,55 @@
+spring:
+#  數據庫連接配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:5678/bookdb
+    username: root
+    password: h124507595
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  google OAuth2.0配置
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 308596545402-a72bvs2pf9qn69inudr6merbnkrickpj.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 625037139308121
+            client-secret: 8ee5ea1cecff4a84984e4b3c4369b187
+            scope:
+              - email
+              - public_profile
+#  發送郵件配置
+  mail:
+    host: smtp.gmail.com
+    username: bookstestweb@gmail.com
+    password: uinmzpjpcsldwdoz
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+            auth: true
+  # 設置MyBatis-plus全局配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #     設置實體類對應的表格的統一前綴
+      table-prefix: t_
+      #     統一主鍵生成策略
+      id-type: auto
+  # 配置類型別名所對應的包
+  type-aliases-package: com.example.springbootmybatisplus.pojo
+  # 掃描通用枚舉
+  type-enums-package: com.example.springbootmybatisplus.enums
+server:
+  port: 8080
+  servlet:
+    context-path: /books

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+    <script src="/books/asserts/js/myapp/detail.js"></script>
+    <script src="/books/asserts/js/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="/books/asserts/js/bundle.min.js"></script>
+    <!-- Plugin Js -->
+    <script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+    <script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+    <script src="/books/asserts/js/owl.carousel.min.js"></script>
+    <script src="/books/asserts/js/swiper.min.js"></script>
+    <script src="/books/asserts/js/wow.min.js"></script>
+    <script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+    <script src="/books/asserts/js/parallaxie.min.js"></script>
+    <script src="/books/asserts/js/stickyfill.min.js"></script>
+    <script src="/books/asserts/js/nouislider.min.js"></script>
+
+    <script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- SLIDER REVOLUTION EXTENSIONS -->
+    <script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+    <script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+    <script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+    <!-- Custom Script -->
+    <script src="/books/asserts/js/script.js"></script>
+    <style>
+       .star{
+            background-color :black;
+            font-size: 20px;
+            color: yellow;
+            display: inline;
+        }
+       .comment li{
+            list-style: none;
+            display: inline ;
+        }
+    </style>
+</head>
+<body>
+<div class="star">
+    <ul class="comment" >
+        <li class="1"><i class="fa-regular fa-star"></i></li>
+        <li class="2"><i class="fa-regular fa-star"></i></li>
+        <li class="3"><i class="fa-regular fa-star"></i></li>
+        <li class="4"><i class="fa-regular fa-star"></i></li>
+        <li class="5"><i class="fa-regular fa-star"></i></li>
+    </ul>
+</div>
+<div class="star" id="showStar">
+<button @click="getStar">取得星級</button>
+<ul>
+    <li v-if="starNum >= 1"><i class="fa-solid fa-star"></i></li>
+    <li v-if="starNum >= 2"><i class="fa-solid fa-star"></i></li>
+    <li v-if="starNum >= 3"><i class="fa-solid fa-star"></i></li>
+    <li v-if="starNum >= 4"><i class="fa-solid fa-star"></i></li>
+    <li v-if="starNum >= 5"><i class="fa-solid fa-star"></i></li>
+</ul>
+</div>
+<script>
+    let starStr ;
+
+    $(function () {
+        var wjxs = "<i class=\"fa-solid fa-star\"></i>";
+        var wjxk = "<i class=\"fa-regular fa-star\"></i>";
+        //鼠标进入事件
+        $(".comment>li").on("mouseenter", function () {
+            $(this).html(wjxs).prevAll().html(wjxs);
+            $(this).nextAll().html(wjxk);
+        });
+        //离开事件，所有的li变成空心
+        $(".comment").on("mouseleave", function () {
+            $(this).children().html(wjxk);
+            // 找到current，让current以及current前面的变成实心
+            $("li.current").html(wjxs).prevAll().html(wjxs);
+        });
+
+        //给li注册点击事件，获取当前元素的位置current
+        $(".comment>li").on("click", function () {
+            $(this).addClass("current").siblings().removeClass("current");
+             let star = $(this).attr("class")
+             starStr = star.split(" ")[0]
+        });
+    });
+
+    window.onload = function (){
+        let vm = new Vue({
+            el:"#showStar",
+            data:{
+                starNum:"",
+            },methods:{
+                getStar:function (){
+                    alert(starStr)
+                    vm.starNum = starStr;
+                }
+            }
+        })
+    }
+
+
+</script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+</body>
+</html>

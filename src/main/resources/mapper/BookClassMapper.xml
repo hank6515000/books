@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.books.mapper.BookClassMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.books.pojo.BookClass">
+            <id property="bid" column="bid" jdbcType="INTEGER"/>
+            <result property="bookClass" column="book_class" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        bid,book_class
+    </sql>
+</mapper>

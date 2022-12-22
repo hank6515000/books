@@ -1,0 +1,176 @@
+<!DOCTYPE html >
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta Tags For Seo + Page Optimization -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description" content="Book Store is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Book Store | MEMBER</title>
+    <!-- Favicon -->
+
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/UserProfile.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+
+<!-- START HEADER NAVIGATION -->
+<div th:replace="~{commons/navbar :: topBar}"></div>
+<!-- END HEADER NAVIGATION -->
+
+<!--slider sec strat-->
+<section id="slider-sec" class="slider-sec parallax" style="background: url('/books/asserts/image/banner5.png');">
+</section>
+<!--slider sec end-->
+
+<!--Product Line Up Start -->
+<div id="member" class="member">
+    <div class="container">
+        <div  class="row no-gutters">
+            <!-- START STICKY NAV -->
+            <div class="col-12 col-lg-2 order-2 order-lg-1 sticky ">
+                <div  class="product-listing-heading mb-3">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a class="mb-3 collapsePagesSideMenu font-25" data-toggle="collapse" href="#sideNavPages1">
+                                    我的帳戶 <i class="fas fa-chevron-down"></i>
+                                </a>
+                                <div id="sideNavPages1" class="collapse sideNavPages">
+                                    <ul class=" mt-1">
+                                        <li>
+                                            <button @click="profile" class="rebtn">個人檔案</button>
+                                        </li>
+                                        <li>
+                                            <button @click="updatePwd" class="rebtn">更改密碼</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="mb-3 collapsePagesSideMenu font-25" data-toggle="collapse" href="#sideNavPages2">
+                                    購買清單 <i class="fas fa-chevron-down"></i>
+                                </a>
+                                <div id="sideNavPages2" class="collapse sideNavPages">
+                                    <ul class=" mt-1">
+                                        <li>
+                                            <button @click="getCart" class="rebtn">購物車</button>
+                                        </li>
+                                        <li>
+                                            <button @click="getOrder" class="rebtn">訂單詳情</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- END STICKY NAV -->
+                <!-- 個人檔案 -->
+            <div v-if="operate ==='profile'" class="col-12 col-lg-6 order-2 order-lg-1 sticky ">
+                <div th:replace="~{commons/member-page ::profile}"></div>
+            </div>
+            <div v-if="operate ==='profile'" class="col-12 col-lg-4 order-2 order-lg-1 sticky ">
+                <div th:replace="~{commons/member-page ::uploadImg}"></div>
+            </div>
+            <!-- 更改密碼 -->
+            <div v-if="operate ==='updatePwd'" class="col-12 col-lg-10 order-2 order-lg-1 sticky ">
+                <div th:replace="~{commons/member-page ::updatePwd}"></div>
+            </div>
+                <!-- 購物車 -->
+            <div  v-if="operate ==='cart'" class="col-12 col-lg-10 order-2 order-lg-1 sticky ">
+                <div th:replace="~{commons/member-page ::cart}"></div>
+            </div>
+                <!-- 訂單詳情 -->
+            <div  v-if="operate ==='order'" class="col-12 col-lg-10 order-2 order-lg-1 sticky ">
+                <div th:replace="~{commons/member-page ::order}"></div>
+            </div>
+            <div  v-if="operate ==='orderDetail'" class="col-12 col-lg-10 order-2 order-lg-1 sticky ">
+                <div th:replace="~{commons/member-page ::orderDetail}"></div>
+            </div>
+             </div>
+       </div>
+</div>
+
+<!--Product Line Up End-->
+
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!--START SEARCH AREA-->
+<div th:replace="~{commons/navbar :: searchBox}"></div>
+<!--END SEARCH AREA -->
+
+<!--START Cart Box-->
+<div th:replace="~{commons/navbar :: cartBox}"></div>
+<!--END Cart Box -->
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+<script src="/books/asserts/js/myapp/member.js"></script>
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+</body>
+</html>

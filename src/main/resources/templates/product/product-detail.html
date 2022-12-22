@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta Tags For Seo + Page Optimization -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description" content="Book Store is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Book Store | PRODUCT DETAIL</title>
+    <!-- Favicon -->
+
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+
+<!-- START HEADER NAVIGATION -->
+
+<div th:replace="~{commons/navbar :: topBar}"></div>
+
+<!-- END HEADER NAVIGATION -->
+
+<!--slider sec strat-->
+<section id="slider-sec" class="slider-sec parallax" style="background: url('/books/asserts/image/banner1.1.jpg');;">
+</section>
+<!--slider sec end-->
+
+<!-- START HEADING SECTION -->
+<div id="detail" class="about_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="product-body">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb text-center text-lg-left">
+                            <li class="breadcrumb-item"><a th:href="@{/index}">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a th:href="@{/product/listing/bookClass/}+${bookClassName.bid}">[[${bookClassName.bookClass}]]</a></li>
+                            <li class="breadcrumb-item"><a class="active" href="javascript:void(0)">[[${book.bookname}]]</a></li>
+                        </ol>
+                    </nav>
+                    <div  class="pro-detail-sec row">
+                        <div class="col-12">
+                            <h4 th:text="${book.bookname}" class="pro-heading text-center text-lg-left">Books  Collections</h4>
+                            </div>
+                    </div>
+                    <div class="row product-list product-detail">
+
+                        <div class="col-12 col-lg-6 product-detail-slider">
+                            <div class="wrapper">
+                                <div class="Gallery swiper-container img-magnifier-container" id="gallery">
+                                    <div class="swiper-wrapper myimgs">
+                                        <div class="swiper-slide"> <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="1" title="Zoom In"><img class="myimage" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="gallery"></a></div>
+                                        <div class="swiper-slide"> <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="2" title="Zoom In"><img class="myimage" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></a></div>
+                                        <div class="swiper-slide"> <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="3" title="Zoom In"><img class="myimage" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></a></div>
+                                    </div>
+                                </div>
+                                <div class="Thumbs swiper-container" id="thumbs">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide"> <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 text-center text-lg-left">
+                            <div class="product-single-price">
+                            <ul >
+                                <li>
+                                <h4><span th:text="|$${book.price}|" class="real-price font-25">$249</span> <span hidden="hidden">$450</span></h4>
+                                </li>
+                                <li>出版社:<p class="d-inline" th:text="${book.publishinghouse}"></p></li>
+                                <li>出版日:<p class="d-inline" th:text="${book.publicatiodate}"></p></li>
+                        </ul>
+                        </div>
+                            <div class="product-checklist">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 100% 滿意保證</li>
+                                    <li><i class="fas fa-check"></i> 訂單滿百免運費</li>
+                                    <li><i class="fas fa-check"></i> 14天輕鬆退貨</li>
+                                </ul>
+                            </div>
+
+                            <div class="row product-quantity input_plus_mins no-gutters">
+                                <div class="qty col-12 col-lg-3 d-lg-flex  align-items-lg-center d-inline-block">
+                                    <span @click="minus" class="minus bg-dark"><i class="fa-solid fa-minus"></i></span>
+                                    <span class="count">{{buyCount}}</span>
+                                    <span @click="plus" class="plus bg-dark"><i class="fa-solid fa-plus"></i></span>
+                                </div>
+                                <div class="col-12 col-lg-9">
+                                    <button @click="addCart" class="btn green-color-yellow-gradient-btn border-radius">添加至購物車</button>
+                                    <button @click="buyCart" class="btn green-color-yellow-gradient-btn border-radius">直接購買</button>
+                                </div>
+                            </div>
+
+
+                            <div class="dropdown-divider"></div>
+
+                            <div class="product-tags-list">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><p class="d-inline">已售出: <span th:text="${book.salecount}">00012</span></p></li>
+                                        <li class="breadcrumb-item"><p class="d-inline">庫存: <span th:text="${book.bookcount}">00012</span></p></li>
+                                        </ol>
+                                </nav>
+                            </div>
+
+                            <div class="share-product-details">
+                                <ul class="share-product-icons">
+                                    <li><p>Share Link:</p></li>
+                                    <li><a href="javascript:void(0)" class="facebook-bg-hvr"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:void(0)" class="twitter-bg-hvr"><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
+                                    <li><a href="javascript:void(0)" class="linkedin-bg-hvr"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                                    <li><a href="javascript:void(0)" class="instagram-bg-hvr"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-4 mb-4">
+                            <div class="row no-gutters product-all-details">
+
+                                <ul class="col-12 nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="col-6 nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">書籍簡介</a>
+                                    </li>
+                                    <li class="col-6 nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">顧客回覆({{replyList.length}})</a>
+                                    </li>
+                                </ul>
+                                <div class="col-12 tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <p th:text="${book.content}" class="product-tab-description text-center text-lg-left"></p>
+                                        </div>
+                                    <div class="tab-pane fade reviews" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                                        <div class="media" v-for="reply in replyList">
+                                            <div class="row no-gutter" style="color: #1c7430;width: 100%;">
+                                                <div class="col-12 col-lg-4 p-0">
+                                                    <div class="row no-gutters" >
+                                                        <div class="col-12 d-flex  justify-content-center">
+                                                            <img v-bind:src="'/books/'+reply.userInfo.headimgPath">
+                                                        </div>
+                                                        <div id="showStar" class="col-12 d-flex mt-2 justify-content-center star">
+                                                            <ul class="replyStar">
+                                                                <li style="color: black">評分:</li>
+                                                                <li v-if="reply.starnum >= 1"><i class="fa-solid fa-star"></i></li>
+                                                                <li v-if="reply.starnum >= 2"><i class="fa-solid fa-star"></i></li>
+                                                                <li v-if="reply.starnum >= 3"><i class="fa-solid fa-star"></i></li>
+                                                                <li v-if="reply.starnum >= 4"><i class="fa-solid fa-star"></i></li>
+                                                                <li v-if="reply.starnum >= 5"><i class="fa-solid fa-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-8 p-0">
+                                                    <div class="media-body d-flex align-content-center">
+                                                        <table class="table-center align-items-center">
+                                                            <tr>
+                                                                <th class="w-100px">日期</th>
+                                                                <td><span class="text-center text-lg-left d-block color-green"> {{reply.userInfo.replydate}}</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="w-100px">用戶</th>
+                                                                <td><h5 class="mb-2 text-center text-lg-left"> {{reply.userInfo.name}}</h5></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="w-100px">回覆</th>
+                                                                <td><p class="text-center text-lg-left">{{reply.reply}}</p></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row pl-2 pr-2">
+                                            <div class="col-12 d-flex mb-4 mt-3">
+                                                <hr class="w-100 ml-5">
+                                            </div>
+                                            <div th:if="${#lists.isEmpty(session.user)}" class="col-12 text-center">
+                                                <h1>登入後即可回覆</h1>
+                                                <button class="m-5 text-center btn green-color-yellow-gradient-btn border-radius">
+                                                    <a th:href="@{/login}">登入</a>
+                                                </button>
+                                            </div>
+                                            <div th:unless="${#lists.isEmpty(session.user)}" class="col-12">
+
+                                                <div class="getin_form border-form" id="register">
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-2 text-center text-lg-left">
+                                                            <h5 class="text-nowrap">添加回覆</h5>
+                                                        </div>
+                                                        <div class="col-12 col-lg-10 text-lg-center m-3" >
+                                                            <h5 class="text-nowrap">五星評分:{{starNum}}星</h5>
+                                                            <div class="star">
+                                                            <ul class="comment">
+                                                                <li class="1"><i class="fa-regular fa-star"></i></li>
+                                                                <li class="2"><i class="fa-regular fa-star"></i></li>
+                                                                <li class="3"><i class="fa-regular fa-star"></i></li>
+                                                                <li class="4"><i class="fa-regular fa-star"></i></li>
+                                                                <li class="5"><i class="fa-regular fa-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control textareaclass" v-model="reply" rows="5" id="comment" placeholder="您想說什麼..."></textarea>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 mt-3">
+                                                            <div class="form-group d-flex justify-content-center d-lg-block text-center">
+                                                                <button @click="addReply" class="text-center btn green-color-yellow-gradient-btn border-radius">回覆</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--START LATEST ARRIVALS-->
+    <div class="lastest_arrivals">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h1>相關書籍</h1>
+                </div>
+
+                <div class="col-12">
+                    <div class="lastest_featured_products owl-carousel owl-theme">
+
+                        <div th:each="book : ${relevantBooks}" class="lastest_arrival_items item">
+                            <a th:href="|@{/product/detail}?bid=${book.id}|" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
+                            <div class="card">
+                                <span class="product-type">NEW</span>
+                                <div style="width: 200px;height: 300px" class="image-holder ">
+                                    <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="lastest_product" data-title="Shirt Name">
+                                        <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" class="card-img-top p-item-img" alt="Lastest Arrivals 1">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <h5 class="card-title">[[${book.bookname}]]</h5>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <p class="card-text">[[${book.price}]]</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--END LATEST ARRIVALS-->
+
+</div>
+<!-- END HEADING SECTION -->
+
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!--START SEARCH AREA-->
+<div th:replace="~{commons/navbar :: searchBox}"></div>
+<!--END SEARCH AREA -->
+
+<!--START Cart Box-->
+<div th:replace="~{commons/navbar :: cartBox}"></div>
+<!--END Cart Box -->
+
+
+<!-- JavaScript -->
+<script src="/books/asserts/js/jquery-3.6.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+<script src="/books/asserts/js/myapp/detail.js"></script>
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+
+</body>
+</html>

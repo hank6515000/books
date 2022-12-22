@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags For Seo + Page Optimization -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description" content="Book Store is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Book Store | CONTACT</title>
+    <!-- Favicon -->
+
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+<!-- START HEADER NAVIGATION -->
+<div th:replace="~{commons/navbar :: topBar}"></div>
+<!-- END HEADER NAVIGATION -->
+
+<!--slider sec strat-->
+<section id="slider-sec" class="slider-sec parallax" style="background: url('/books/asserts/image/Free-Book.jpg'); opacity: 0.8;">
+</section>
+<!--slider sec end-->
+
+<!-- Contact Us Start -->
+<section class="contact-sec" id="contact-sec">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 contact-description wow slideInLeft" data-wow-delay=".8s">
+                <div class="contact-detail wow fadeInLeft">
+                    <div class="ex-detail">
+                        <h2 class="fly-text">聯繫我們</h2>
+                    </div>
+                    <p class="small-text text-center text-md-left">
+                        這是一個線上書店的網頁練習範本，如需聯繫我請洽以下信息：
+                    </p>
+                        <div class="col-12 col-md-6 country-1">
+                            <h4 class="heading-text text-left">Taiwan</h4>
+                            <ul>
+                                <br>
+                                <li><i class="fas fa-mobile-alt"></i><a href="#"> 0970-039-113</a></li>
+                                <br>
+                                <li><i class="fas fa-envelope"></i><a href="#">hank6515000@gmail.com</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 contact-box text-center text-md-left wow slideInRight" data-wow-delay=".8s">
+                <div class="c-box wow fadeInRight">
+                    <h2 class="fly-text">請留言</h2>
+<!--                        <p class="small-text">Lorem ipsum is simply dummy text of the printing and typesetting industry. </p>-->
+                    <form id="contact" class="contact-form" >
+                        <div class="row my-form">
+                            <div class="col-md-12 col-sm-12">
+                                <div id="result"></div>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="candidate_fname" v-model="name" placeholder="姓名" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="email" class="form-control" id="user_email" v-model="email" placeholder="信箱" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="user_message" v-model="message" placeholder="您想說的是..." rows="7" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button @click="contact" class="btn green-color-yellow-gradient-btn user-contact contact_btn border-radius m-3" type="button">提交
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Us End -->
+
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!--START SEARCH AREA-->
+<div th:replace="~{commons/navbar :: searchBox}"></div>
+<!--END SEARCH AREA -->
+
+<!--START Cart Box-->
+<div th:replace="~{commons/navbar :: cartBox}"></div>
+<!--END Cart Box -->
+
+<!-- JavaScript -->
+<script src="/books/asserts/js/myapp/contcat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+</body>
+</html>

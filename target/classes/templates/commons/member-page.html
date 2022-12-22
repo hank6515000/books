@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--START 個人檔案 -->
+  <div th:fragment="profile">
+  <div class="row">
+    <!-- START LISTING HEADING -->
+    <div class="col-12 product-listing-heading">
+      <h1 class="heading text-center">個人檔案</h1>
+    </div>
+  </div>
+  <div class="banner-description ">
+    <div class="novalidate needs-validation animated fadeInLeft delay-1s">
+      <div class="mb-3 ml-5 mr-5">
+        <label for="emailText" class="form-label">用戶信箱</label>
+        <input  type="text" class="form-control" th:value="${user.username}" id="emailText" disabled="disabled"/>
+      </div>
+        <div class="mb-3 ml-5 mr-5">
+          <label for="nameText" class="form-label">用戶姓名</label>
+          <input th:value="${user.name}" type="text" class=" form-control " id="nameText"  onblur="validName()"/>
+          <div class="text-center">
+            <span id="name1" class="hidden color-danger">姓名必須是2-5位中文或是任意6-16英文數字組合<i class="fa-solid fa-circle-exclamation"></i></span>
+            <span id="name2" class="hidden color-green">認證成功<i class="fa-solid fa-check"></i></span>
+          </div>
+        </div>
+        <div class="mb-3 ml-5 mr-5">
+          <label for="phoneText" class="form-label">手機號碼</label>
+          <input th:value="${user.phone}" type="text" class="form-control" id="phoneText"  onblur="validPhone()"/>
+          <div class="text-center">
+            <span id="phone1" class="hidden color-danger">電話必須是10碼<i class="fa-solid fa-circle-exclamation"></i></span>
+            <span id="phone2" class="hidden color-green">認證成功<i class="fa-solid fa-check"></i></span>
+          </div>
+        </div>
+        <div class="row ml-5 mr-5">
+          <label class="form-label">性別</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sexOptions" id="inlineRadio1" value="男" th:field="*{user.sex}" checked>
+            <label class="form-check-label" for="inlineRadio1">男性</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sexOptions" id="inlineRadio2" value="女" th:field="*{user.sex}">
+            <label class="form-check-label" for="inlineRadio2">女性</label>
+          </div>
+        </div>
+        <div class="text-center m-5">
+          <button @click="onsubmit" type="button" class="btn green-color-yellow-gradient-btn border-radius text-center">儲存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--START 上傳頭像-->
+  <div th:fragment="uploadImg">
+<div  class="product-filter-nav mb-3 animated fadeInLeft delay-1s" style="display: flex;justify-content: center;align-items: center">
+  <div class="card" style="width: 18rem;">
+    <div id="showImg">
+      <img th:src="|/books/${user.headimgPath}|" class="card-img-top" alt="">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">檔案限制: .JPG, .PNG</h5>
+      <p class="card-text">檔案大小:限制100KB</p>
+      <div class="col mb-3">
+        <input type="file" class="form-control" id="headerImg"  name="headerImg" accept=".jpg,.png" @change="checkImg">
+        <br>
+        <input  class="btn green-color-yellow-gradient-btn border-radius" type="submit" value="上傳" @click="imgUpload" >
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--START 更改密碼-->
+<div th:fragment="updatePwd" class="col-md-12 col-lg-10 order-1 order-lg-2">
+<div class="animated fadeInLeft delay-1s text-center">
+  <div  class="row">
+    <!-- START LISTING HEADING -->
+    <div class="col-12 product-listing-heading">
+      <h1 class="heading text-center">更改密碼</h1>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div>
+      <label for="pwdText">新用戶密碼：</label>
+      <input v-model="password" id="pwdText" type="password" placeholder="請輸入密碼" />
+    </div>
+  </div>
+  <div class="mb-3">
+    <div>
+      <label for="pwdCheckText" >確認新密碼：</label>
+      <input v-model="confirmPassword" id="pwdCheckText" type="password" name="checkPwd" placeholder="請輸入確認密碼" />
+    </div>
+  </div>
+  <div id="msg">
+    {{msg}}
+  </div>
+  <div class="text-center">
+    <button  @Click="onsubmitPwd"  type="submit" class="btn green-color-yellow-gradient-btn border-radius m-5">修改</button>
+  </div>
+</div>
+</div>
+
+
+<!--START 購物車-->
+<div th:fragment="cart" class="about_content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-10  text-center text-lg-left wow slideInUp" data-wow-duration="1s">
+        <h1 class="heading">準備好結帳了嗎?</h1>
+        <p class="para_text">請確認商品及數量是否與您需求相同。</p>
+      </div>
+    </div>
+  </div>
+  <!-- START SHOP CART SECTION -->
+  <div class="shop-cart wow slideInUp" data-wow-duration="2s">
+    <div class="container">
+      <!-- START SHOP CART TABLE -->
+      <div class="row pt-5">
+        <div class="col-12 col-md-12 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+          <div class="table-responsive">
+            <table class="table-center table table-bordered border-radius" >
+              <thead>
+              <tr class="text-center">
+                <th class="darkcolor">商品</th>
+                <th class="darkcolor">價格</th>
+                <th class="darkcolor">數量</th>
+                <th class="darkcolor">總價</th>
+                <th class="darkcolor"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="cart in cartItem.cartItemMap">
+                <td>
+                  <div class="d-table product-detail-cart">
+                    <div class="media">
+                      <div class="row no-gutters" >
+
+                        <div class="col-12 col-lg-4 product-detail-cart-image">
+                          <a class="shopping-product" v-bind:href="'product/detail?bid='+cart.bookItem.id"><img v-bind:src="'asserts/bookimgs/'+cart.bookItem.bookimg" alt="Generic placeholder image"></a>
+                        </div>
+                        <div class="col-12 col-lg-8 d-flex align-items-center">
+                            <h4 class="product-name"><a>{{cart.bookItem.bookname}}</a></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h4 class="text-center amount" >${{cart.bookItem.price}}</h4>
+                </td>
+                <td>
+                  <div class="row product-quantity input_plus_mins no-gutters text-center">
+                    <div class="qty">
+                      <span @click="editCart(cart.id,cart.buycount-1)" class="minus bg-dark"><i class="fa-solid fa-minus"></i></span>
+                      <input type="number" class="count" name="qty" step="1" v-bind:value="cart.buycount" />
+                      <span @click="editCart(cart.id,cart.buycount+1)" class="plus bg-dark"><i class="fa-solid fa-plus"></i></span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h4 class="text-center amount">${{cart.sub}}</h4>
+                </td>
+                <td>
+                  <button @click="deleteCart(cart.id)" class="rebtn"><i class="fa-solid fa-trash"></i></button>
+                  </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="apply_coupon">
+            <div class="row">
+              <div class="col-12 text-right">
+                <p>總金額(共{{cartItem.totalCount}}款書籍,總數為{{cartItem.totalBookCount}}本):${{cartItem.total}}</p>
+                <a @click="deleteAll" class="btn yellow-color-green-gradient-btn border-radius">取消</a>
+                <a @click="checkout" class="btn green-color-yellow-gradient-btn border-radius">結帳</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END SHOP CART TABLE -->
+    </div>
+  </div>
+  <!-- END SHOP CART SECTION-->
+  </div>
+
+
+<!--START訂單詳情-->
+<div th:fragment="order" class="about_content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-10  text-center text-lg-left wow slideInUp" data-wow-duration="1s">
+        <h1 class="heading">感謝您的訂購</h1>
+        <p class="para_text">請耐心等候您的商品</p>
+      </div>
+    </div>
+  </div>
+  <!-- START SHOP CART SECTION -->
+  <div class="shop-cart wow slideInUp" data-wow-duration="2s">
+    <div class="container">
+      <!-- START SHOP CART TABLE -->
+      <div class="row pt-5">
+        <div class="col-12 col-md-12 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+          <div class="table-responsive">
+            <table class=" table-bordered" >
+              <thead>
+              <tr class="text-center" style="white-space: nowrap">
+                <th class="darkcolor">訂單號碼</th>
+                <th class="darkcolor">訂單日期</th>
+                <th class="darkcolor">訂單金額</th>
+                <th class="darkcolor">訂單詳情</th>
+                <th class="darkcolor">訂單狀態</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="orderItem in order" class="text-center">
+                <td>
+                 {{orderItem.orderno}}
+                </td>
+                <td>
+                  {{orderItem.orderdate}}
+                </td>
+                <td>
+                  {{orderItem.ordermoney}}
+                </td>
+                <td>
+                  <button @click="getOrderDetail(orderItem.orderno)">點此查看詳情</button>
+                </td>
+                <td>
+                  {{orderItem.orderstatus}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- END SHOP CART TABLE -->
+    </div>
+  </div>
+  <!-- END SHOP CART SECTION-->
+</div>
+
+<div th:fragment="orderDetail" class="about_content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-10  text-center text-lg-left wow slideInUp" data-wow-duration="1s">
+        <h1 class="heading">訂單詳情</h1>
+        <p class="para_text"></p>
+      </div>
+    </div>
+  </div>
+  <!-- START SHOP CART SECTION -->
+  <div class="shop-cart wow slideInUp" data-wow-duration="2s">
+    <div class="container">
+      <!-- START SHOP CART TABLE -->
+      <div class="row pt-5">
+        <div class="col-12 col-md-12 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+          <div class="table-responsive">
+            <table class="table-center table table-bordered border-radius" >
+              <thead>
+              <tr class="text-center">
+                <th class="darkcolor">商品</th>
+                <th class="darkcolor">訂購數量</th>
+                <th class="darkcolor">單筆小計</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="orderItem in orderDetail">
+                <td>
+                  {{orderItem.bookItem.bookname}}
+                </td>
+                <td>
+                  {{orderItem.buycount}}
+                </td>
+                <td>
+                  {{orderItem.sub}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- END SHOP CART TABLE -->
+    </div>
+  </div>
+  <!-- END SHOP CART SECTION-->
+</div>
+</body>
+</html>

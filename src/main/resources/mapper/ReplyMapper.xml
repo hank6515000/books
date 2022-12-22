@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.books.mapper.ReplyMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.books.pojo.Reply">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="bookid" column="bookId" jdbcType="INTEGER"/>
+            <result property="replyuser" column="replyUser" jdbcType="INTEGER"/>
+            <result property="starnum" column="starNum" jdbcType="INTEGER"/>
+            <result property="reply" column="reply" jdbcType="VARCHAR"/>
+            <result property="replydate" column="replyDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,bookId,replyUser,
+        starNum,reply,replyDate
+    </sql>
+</mapper>

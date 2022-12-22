@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store | REGISTER</title>
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+<div th:replace="~{commons/navbar :: otherBar}"></div>
+
+<div class="homer-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center text-center text-lg-left">
+                <div class="banner-description">
+                    <div id="register" class="novalidate needs-validation animated fadeInLeft delay-1s">
+                        <div class="mb-3">
+                                <label for="nameText" class="form-label">用戶姓名</label>
+                                <input v-model="name" type="text" class=" form-control" id="nameText" placeholder="請輸入输入用户名" onblur="validName()"/>
+                                <div class="text-center">
+                                <span id="name1" class="hidden color-danger">姓名必須是2-5位中文或是任意6-16英文數字組合<i class="fa-solid fa-circle-exclamation"></i></span>
+                                <span id="name2" class="hidden color-green">認證成功<i class="fa-solid fa-check"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                                <label for="passwordText" class="form-label">用戶密碼</label>
+                                <input v-model="password" type="password" class="form-control" id="passwordText"  required placeholder="請輸入密碼" onblur="validPassword()"/>
+                             <div class="text-center">
+                                <span id="pwd1" class="hidden color-danger">密碼必須至少8個字符且必須至少一個字母或數字<i class="fa-solid fa-circle-exclamation"></i></span>
+                                <span id="pwd2" class="hidden color-green">認證成功<i class="fa-solid fa-check"></i></span>
+                            </div>
+
+                        </div>
+                        <div class="mb-3">
+                                <label for="pwdCheckText" class="form-label">確認密碼</label>
+                                <input v-model="checkPassword" id="pwdCheckText" class="form-control" type="password" placeholder="請輸入確認密碼" onblur="validCheckPassword()"/>
+                            <div class="text-center">
+                                <span id="ckpwd1" class="hidden color-danger">密碼不相同<i class="fa-solid fa-circle-exclamation"></i></span>
+                                <span id="ckpwd2" class="hidden color-green">認證成功<i class="fa-solid fa-check"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                                <label for="verifyCode" class="form-label">認證碼</label>
+                                    <input id="verifyCode" type="text" v-model="verifyCode" placeholder="" @blur="kaptcha"/>
+                                <img th:src="@{/kaptcha/kaptcha-image}" class="ver_btn" onclick="this.src=this.src+'?c='+Math.random();"/>
+                            <div class="text-center">
+                                <span id="kaptcha">{{kaptMsg}}</span>
+                            </div>
+                        </div>
+                        <span id="msg">{{msg}}</span>
+                       <button @click="onsubmit" type="button" class="btn green-color-yellow-gradient-btn text-right border-radius">REGISTER</button>
+                    </div>
+                   </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!-- JavaScript -->
+<script src="/books/asserts/js/myapp/register.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+</body>
+</html>

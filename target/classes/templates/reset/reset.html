@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store | RESET</title>
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+<!-- START HEADER NAVIGATION -->
+<div th:replace="~{commons/navbar :: otherBar}"></div>
+<!-- END HEADER NAVIGATION -->
+
+<div class="homer-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center text-center text-lg-left">
+                <div class="banner-description">
+                    <div id="reset"  class="animated fadeInLeft delay-1s">
+                        <div class="mb-3">
+                            <div>
+                                <label for="pwdText">用戶新密碼：</label>
+                                <input v-model="password" id="pwdText" type="password" placeholder="請輸入密碼" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div>
+                                <label for="pwdCheckText" >確認新密碼：</label>
+                                <input v-model="confirmPassword" id="pwdCheckText" type="password" name="checkPwd" placeholder="請輸入確認密碼" />
+                            </div>
+                        </div>
+                        <div id="msg">
+                            {{msg}}
+                        </div>
+                        <div id="timeBox" class="text-center" style="color:red; font-size: 15px;"></div>
+                        <div class="text-right">
+                        <button  @Click="onsubmit"  type="submit" class="btn green-color-yellow-gradient-btn border-radius">修改</button>
+                        </div>
+                   </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!-- JavaScript -->
+<script>
+<!-- **獲取url上的參數(token)   -->
+let urlStr = location.href;
+let url = new URL(urlStr);
+    //設定三秒後跳轉邏輯
+function countDown(){
+    const Toast = Swal.mixin({
+        position: 'center',
+        timer: 3000,
+        timerProgressBar: true,
+    })
+    Toast.fire({
+        icon: 'success',
+        title: '修改成功'
+    }).then(function () {
+        location.href="/books/index";
+    })
+}
+    window.onload=function () {
+        let vm = new Vue({
+            el: "#reset",
+            data: {
+                password:"",
+                confirmPassword:"",
+                msg:"",
+                token: url.searchParams.get("token")
+            },
+            methods: {
+                onsubmit: function () {
+                    axios({
+                        method: "POST",
+                        url: "/books/resetPassword",
+                        params: {
+                            password: vm.password,
+                            confirmPassword: vm.confirmPassword,
+                            token: vm.token
+                        }
+                    }).then(function (value) {
+                        if (value.data.code == 200) {
+                            let msg = value.data.msg;
+                            vm.msg = msg;
+                            countDown();
+                        } else {
+                            $("#msg").removeClass("color-green color-danger").next("i").remove();
+                            let msg = value.data.data.msg;
+                            vm.msg = msg;
+                            let icon = $("<i></i>").addClass("color-danger fa-solid fa-circle-exclamation")
+                            $("#msg").addClass("color-danger").after(icon)
+                        }
+                    }).catch(function (reason) {
+
+                    })
+                }
+            }
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta Tags For Seo + Page Optimization -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Themes Industry">
+    <!-- description -->
+    <meta name="description" content="MegaOne is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and HTML5 template with 14 ready home page demos.">
+    <!-- keywords -->
+    <meta name="keywords" content="creative, modern, clean, bootstrap responsive, h tml5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, faq">
+    <!-- Page Title -->
+    <title>Book Store | INDEX</title>
+    <!-- Favicon -->
+    
+    <!-- Bundle -->
+    <link rel="stylesheet" th:href="@{/asserts/css/bundle.min.css}">
+    <!-- Plugin Css -->
+    <link rel="stylesheet" th:href="@{/asserts/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/cubeportfolio.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/wow.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/lineicons.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/nouislider.min.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/range-slider.css}">
+    <link rel="stylesheet" th:href="@{/asserts/css/owl.carousel.min.css}">
+    <!-- Slider Setting Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/settings.css}">
+    <!-- Mega Menu  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/megamenu.css}">
+    <!-- StyleSheet  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/style.css}">
+    <!-- Custom Css  -->
+    <link rel="stylesheet" th:href="@{/asserts/css/custom.css}">
+    <link rel="stylesheet" type="text/css" href="path/to/sweetalert2/dist/sweetalert2.min.css">
+</head>
+<body>
+
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+
+
+<!--LOADER-->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+<!--LOADER-->
+<!-- START HEADER NAVIGATION -->
+<div th:replace="~{commons/navbar :: topBar}"></div>
+<!-- END HEADER NAVIGATION -->
+
+<!--BANNER START-->
+<div class="homer-banner" >
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center text-center text-lg-left">
+                <div class="banner-description">
+                    <span class="small-heading animated fadeInRight delay-1s">BEST AVAILABLE</span>
+                    <h1 class="w-sm-100 w-md-100 w-lg-25 animated fadeInLeft delay-1s">BOOKS <span>COLLECTION</span></h1>
+                    <button type="button" class="btn green-color-yellow-gradient-btn animated fadeInLeft delay-1s">
+                        <a th:href="@{product/listing/bookClass/0}">SHOP NOW</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--BANNER END-->
+
+<!--START OUR SERVICES-->
+<div class="our-services">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="service">
+                    <div class="media">
+                        <div class="service-card">
+                            <i class="fas fa-truck mr-3"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0">免費運送</h5>
+                                <span>超過 $500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="service">
+                    <div class="media">
+                        <div class="service-card">
+                            <i class="fas fa-undo mr-3"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0">退貨保證</h5>
+                                <span>100% 退款</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="service">
+                    <div class="media">
+                        <div class="service-card">
+                            <i class="fas fa-piggy-bank mr-3"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0">付款方式</h5>
+                                <span>提供線上支付</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <div class="service">
+                    <div class="media">
+                        <div class="service-card">
+                            <i class="fas fa-hands-helping mr-3"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0">幫助 & 支持</h5>
+                                <span>TEL : 0800-XXX-XXXX </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END OUR SERVICES-->
+
+<!-- START PORTOLIO SECTION -->
+<div class="portfolio-section">
+    <div class="container">
+        <div class="row">
+            <!-- START PORTFOLIO HEADING -->
+            <div class="col-12">
+                <div class="portfolioHeading text-center">
+                    <h1 class="high-lighted-heading">出版書籍分類清單</h1>
+                    </div>
+            </div>
+            <!-- END PORTFOLIO HEADING -->
+
+            <!-- START FILTERS -->
+            <div class="col-12">
+                <div class=" clearfix d-flex justify-content-center">
+                        <ul id="js-filters-blog-posts" class="d-inline cbp-l-filters-button cbp-1-filters-alignCenter">
+                            <li class="d-inline ">
+                                <a class="cbp-filter-item" th:href="@{/product/listing/bookClass/0}">所有書籍</a>
+                            </li>
+                            <li class="d-inline " th:each="bookClazz : ${session.bookClass}">
+                                <a class="cbp-filter-item" th:href="@{/product/listing/bookClass/}+${bookClazz.bid}">[[${bookClazz.bookClass}]]</a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+            <!-- END FILTERS -->
+        </div>
+    </div>
+</div>
+<!-- END PORTOLIO SECTION -->
+
+<!--START BANNER SECTION-->
+<div class="banner-section parallax-slide">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 text-center text-lg-left">
+                <div class="banner-content-wrapper">
+                    <span>TRENDING PRODUCT OF THE WEEK</span>
+                    <h1>Books <span>Collections</span></h1>
+                    <p>Aenean imperdiet. Etiam ultricies nisi vel augue men tuhi spectrum alle me</p>
+                    <button type="button" class="btn green-color-yellow-gradient-btn" th:href="@{product/listing/bookClass/0}">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END BANNER SECTION-->
+
+<!--START LATEST ARRIVALS-->
+<div class="lastest_arrivals">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <h1>推薦書籍</h1>
+            </div>
+
+            <div class="col-12">
+                <div class="lastest_featured_products owl-carousel owl-theme">
+
+                    <div th:each="book : ${books}" class="lastest_arrival_items item">
+                        <a th:href="|@{/product/detail}?bid=${book.id}|" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
+                        <div class="card">
+                            <span class="product-type">NEW</span>
+                            <div style="width: 200px;height: 300px" class="image-holder ">
+                                <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="lastest_product" data-title="Shirt Name">
+                                    <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" class="card-img-top p-item-img" alt="Lastest Arrivals 1">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h5 class="card-title">[[${book.bookname}]]</h5>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <p class="card-text">[[${book.price}]]</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END LATEST ARRIVALS-->
+
+<!--footer1 sec start-->
+<div th:replace="~{commons/navbar ::footer}"></div>
+<!--foo0ter1 sec end-->
+
+<!--START SEARCH AREA-->
+<div th:replace="~{commons/navbar :: searchBox}"></div>
+<!--END SEARCH AREA -->
+
+<!--START Cart Box-->
+<div th:replace="~{commons/navbar :: cartBox}"></div>
+<!--END Cart Box -->
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+<script src="/books/asserts/js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="/books/asserts/js/bundle.min.js"></script>
+<!-- Plugin Js -->
+<script src="/books/asserts/js/jquery.fancybox.min.js"></script>
+<script src="/books/asserts/js/owl.carousel.min.js"></script>
+<script src="/books/asserts/js/swiper.min.js"></script>
+<script src="/books/asserts/js/jquery.cubeportfolio.min.js"></script>
+<script src="/books/asserts/js/wow.min.js"></script>
+<script src="/books/asserts/js/bootstrap-input-spinner.js"></script>
+<script src="/books/asserts/js/parallaxie.min.js"></script>
+<script src="/books/asserts/js/stickyfill.min.js"></script>
+<script src="/books/asserts/js/nouislider.min.js"></script>
+
+<script src="/books/asserts/js/jquery.themepunch.tools.min.js"></script>
+<script src="/books/asserts/js/jquery.themepunch.revolution.min.js"></script>
+<!-- SLIDER REVOLUTION EXTENSIONS -->
+<script src="/books/asserts/js/revolution.extension.actions.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.carousel.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.kenburn.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.layeranimation.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.migration.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.parallax.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.slideanims.min.js"></script>
+<script src="/books/asserts/js/revolution.extension.video.min.js"></script>
+<script src="https://kit.fontawesome.com/b27d937124.js" crossorigin="anonymous"></script>
+<!-- Custom Script -->
+<script src="/books/asserts/js/script.js"></script>
+
+</body>
+</html>
