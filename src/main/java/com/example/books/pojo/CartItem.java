@@ -1,9 +1,6 @@
 package com.example.books.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -51,6 +48,9 @@ public class CartItem implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
+
+    @TableLogic
+    private Integer isDeleted;
 
 
     public CartItem(Integer book, Integer buycount, Integer userbean) {

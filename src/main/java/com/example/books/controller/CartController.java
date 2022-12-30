@@ -72,18 +72,31 @@ public class CartController {
         if (principal == null) {
             return Msg.fail().add("msg", "請先登入");
         } else {
-            User user = getUser(principal);
-            Cart cart = cartItemService.getCart(user);
-            //將cart實例封裝到user當中
-            user.setCart(cart);
-            CartItem cartItem = new CartItem(bid,buyCount,user.getId());
-            cartItemService.addOrUpdateCartItemCartItem(cartItem,user.getCart());
+            Book book = bookService.getById(bid);
+            if (book.getBookcount() == 0){
+                User user = getUser(principal);
+                Cart cart = cartItemService.getCart(user);
+                //將cart實例封裝到user當中
+                user.setCart(cart);
+                CartItem cartItem = new CartItem(bid,buyCount,user.getId());
+                cartItemService.addOrUpdateCartItemCartItem(cartItem,user.getCart());
 
-            setSessionCart(session,user);
-            return Msg.success().add("msg","已添加購物車");
+                setSessionCart(session,user);
+                return Msg.success().add("msg","已添加購物車");
+            }else {
+                return Msg.fail().add("msg","庫存為空");
+            }
+
         }
     }
 
+    @ResponseBody
+    @GetMapping("/getBookCount")
+    public Msg getBookCount(@RequestParam("bid")Integer bid){
+        Book book = bookService.getById(bid);
+
+        return Msg.success().add("bookCount",book.getBookcount());
+    }
 
     /**
      * 表單數量增減按鈕操作
@@ -91,7 +104,8 @@ public class CartController {
     @ResponseBody
     @PostMapping("/editCart")
     public Msg editCart(HttpSession session,Principal principal , @RequestParam("cartItemId") Integer cartItemId,@RequestParam("buyCount") Integer buyCount) {
-        if (buyCount > 0) {
+
+        if (buyCount > 0 ) {
             CartItem cartItem = cartItemService.getById(cartItemId);
             cartItem.setBuycount(buyCount);
             cartItemService.updateCartItem(cartItem);
@@ -106,7 +120,7 @@ public class CartController {
      */
     @ResponseBody
     @DeleteMapping("/deleteCart/{cartItemId}")
-    public Msg deleteCart(HttpSession session ,Principal principal ,  @PathVariable("cartItemId")Integer cartItemId){
+    public Msg deleteCart(HttpSession session ,Principal principal,@PathVariable("cartItemId")Integer cartItemId){
         User user = getUser(principal);
         setSessionCart(session, user);
         cartItemService.removeById(cartItemId);

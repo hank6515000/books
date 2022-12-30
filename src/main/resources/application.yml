@@ -36,6 +36,9 @@ spring:
             required: true
             auth: true
   # 設置MyBatis-plus全局配置
+  web:
+    resources:
+      static-locations: classpath:/resources,classpath:/static,classpath:/public,file:C://bookimgs,file:C://HeaderImgs
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

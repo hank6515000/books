@@ -39,7 +39,7 @@ window.onload=function () {
                         swal("warning", value.data.data.msg)
                     }
                 }).catch(function (reason) {
-
+                    console.log(reason)
                 })
             },
             addCart: function () {
@@ -61,14 +61,28 @@ window.onload=function () {
                 })
             },
             minus: function () {
-                if (this.buyCount <= 1) {
-                    this.buyCount = 1;
+                if (vm.buyCount <= 1) {
+                    vm.buyCount = 1;
                 } else {
-                    this.buyCount--;
+                    vm.buyCount--;
                 }
             },
             plus: function () {
-                this.buyCount++;
+                axios({
+                    method:"GET",
+                    url:"/books/getBookCount",
+                    params:{
+                        bid:url.searchParams.get("bid")
+                    }
+                }).then(function (value){
+                    if (vm.buyCount >= value.data.data.bookCount) {
+                        vm.buyCount = value.data.data.bookCount;
+                    } else {
+                        vm.buyCount++;
+                    }
+                }).catch(function (reason){
+                    console.log(reason)
+                })
             },
             starScore:function (){
                 $(function () {

@@ -1,9 +1,7 @@
 package com.example.books.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import lombok.Data;
 
@@ -37,6 +35,9 @@ public class Contact implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    @TableLogic
+    private Integer isDeleted;
 
     public Contact(String name, String email, String massage) {
         this.name = name;

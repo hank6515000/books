@@ -142,7 +142,6 @@ window.onload = function () {
                 , imgUpload: function () {
                     let formdata = new FormData();
                     formdata.append('headerImg', $("#headerImg").get(0).files[0]);
-                    console.log('Value=' + $("#headerImg").val())
                     axios({
                         async: false,
                         method: "POST",
@@ -153,10 +152,10 @@ window.onload = function () {
                         processData: false
                     }).then(function (value) {
                         if (value.data.code == 200) {
-                            swal("success", value.data.data.msg)
+                            swal("success","上傳成功")
                             showLoadImg(value.data.data.path)
                         } else {
-                            swal("warning", value.data.data.msg)
+                            swal("warning","上傳成功")
                         }
                     }).catch(function (reason) {
                         console.log('resp=' + reason)

@@ -81,16 +81,16 @@
                             <div class="wrapper">
                                 <div class="Gallery swiper-container img-magnifier-container" id="gallery">
                                     <div class="swiper-wrapper myimgs">
-                                        <div class="swiper-slide"> <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="1" title="Zoom In"><img class="myimage" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="gallery"></a></div>
-                                        <div class="swiper-slide"> <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="2" title="Zoom In"><img class="myimage" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></a></div>
-                                        <div class="swiper-slide"> <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="3" title="Zoom In"><img class="myimage" th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></a></div>
+                                        <div class="swiper-slide"> <a th:href="@{/}+${book.bookimg}" data-fancybox="1" title="Zoom In"><img class="myimage" th:src="@{/}+${book.bookimg}" alt="gallery"></a></div>
+                                        <div class="swiper-slide"> <a th:href="@{/}+${book.bookimg}" data-fancybox="2" title="Zoom In"><img class="myimage" th:src="@{/}+${book.bookimg}" alt="thumnails"></a></div>
+                                        <div class="swiper-slide"> <a th:href="@{/}+${book.bookimg}" data-fancybox="3" title="Zoom In"><img class="myimage" th:src="@{/}+${book.bookimg}" alt="thumnails"></a></div>
                                     </div>
                                 </div>
                                 <div class="Thumbs swiper-container" id="thumbs">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide"> <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></div>
-                                        <div class="swiper-slide"> <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></div>
-                                        <div class="swiper-slide"> <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img th:src="@{/}+${book.bookimg}" alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img th:src="@{/}+${book.bookimg}" alt="thumnails"></div>
+                                        <div class="swiper-slide"> <img th:src="@{/}+${book.bookimg}" alt="thumnails"></div>
                                     </div>
                                 </div>
                             </div>
@@ -281,8 +281,8 @@
                             <div class="card">
                                 <span class="product-type">NEW</span>
                                 <div style="width: 200px;height: 300px" class="image-holder ">
-                                    <a th:href="@{/asserts/bookimgs/}+${book.bookimg}" data-fancybox="lastest_product" data-title="Shirt Name">
-                                        <img th:src="@{/asserts/bookimgs/}+${book.bookimg}" class="card-img-top p-item-img" alt="Lastest Arrivals 1">
+                                    <a th:href="@{/}+${book.bookimg}" data-fancybox="lastest_product" data-title="Shirt Name">
+                                        <img th:src="@{/}+${book.bookimg}" class="card-img-top p-item-img" alt="Lastest Arrivals 1">
                                     </a>
                                 </div>
                                 <div class="card-body">

@@ -213,65 +213,28 @@ public class UserController {
      */
     @ResponseBody
     @PostMapping(value = {"/uploadImg"},consumes = {"multipart/form-data"})
-    public Msg uploadImg(@RequestParam("headerImg")MultipartFile headerImg , Principal principal, HttpServletRequest request) throws IOException {
-
-       if (headerImg.getSize() /1000 >100){
-           return Msg.fail().add("msg","圖片大小不能超過100KB");
-       }else {
-           String fileName = headerImg.getOriginalFilename();
-           int index = fileName.lastIndexOf(".");
-           String suffixName;
-           if (index>0){
-               suffixName = fileName.substring(fileName.lastIndexOf("."));
-           }else {
-               suffixName = ".png";
-           }
-           String username = principal.getName();
-           User user = userService.getUserByUserName(username);
-           fileName = user.getId() + suffixName;
-
-           Resource resource = new ClassPathResource("");
-           String projectPath = resource.getFile().getAbsolutePath()+"\\static\\img";
-           System.out.println(resource.getFile().getAbsolutePath());
-
-           if (upload(projectPath,headerImg,fileName)){
-               String name = principal.getName();
-               String relativePath = "img/"+fileName;
-               System.out.println(relativePath);
-               boolean isSave = saveImg(name, relativePath);
-               if (isSave){
-                  return Msg.success().add("msg","上傳數據庫成功").add("path",relativePath);
-               }else {
-                  return Msg.fail().add("msg","上傳數據庫失敗");
-               }
-           }   else {
-              return Msg.fail().add("msg","上傳圖片成功");
-           }
-       }
-    }
-
-    /**
-     *上傳圖片方法
-     */
-    private boolean upload(String realPath,MultipartFile file , String fileName){
-        String path = realPath+"\\"+fileName;
-        System.out.println(path);
-
-        File dest = new File(path);
-
-        if (!dest.getParentFile().exists()){
-            boolean isFile = dest.getParentFile().mkdir();
-            if (!isFile){
-                return isFile;
+    public Msg uploadImg(@RequestParam("headerImg")MultipartFile headerImg , Principal principal) throws IOException {
+        String fileName ;
+        if (headerImg.getSize() / 1000 > 100) {
+            return Msg.fail().add("msg", "圖片大小不能超過100KB");
+        } else {
+            fileName = headerImg.getOriginalFilename();
+            int index = fileName.lastIndexOf(".");
+            String suffixName;
+            if (index > 0) {
+                suffixName = fileName.substring(fileName.lastIndexOf("."));
+            } else {
+                suffixName = ".png";
             }
+            String username = principal.getName();
+            User user = userService.getUserByUserName(username);
+            fileName = user.getId() + suffixName;
+
+            headerImg.transferTo(new File("C:\\HeaderImgs\\" + fileName));
+
+            saveImg(username,fileName);
         }
-        try {
-            file.transferTo(dest);
-            return true;
-        }catch (IllegalStateException | IOException e){
-            e.printStackTrace();
-            return false;
-        }
+        return Msg.success().add("path",fileName);
     }
 
     /**

@@ -246,7 +246,7 @@
                     <div  th:unless="${#lists.isEmpty(session.cartItemList)}"   class="listing-search-scroll">
                         <div th:each="cartItem : ${session.cartItemList}" class="media row">
                             <div class="img-holder ml-1 mr-2 col-4">
-                                <a th:href="|@{/product/detail}?bid=${cartItem.bookItem.id}|"><img th:src="@{/asserts/bookimgs/}+${cartItem.bookItem.bookimg}" class="align-self-center" alt="cartitem"></a>
+                                <a th:href="|@{/product/detail}?bid=${cartItem.bookItem.id}|"><img th:src="@{/}+${cartItem.bookItem.bookimg}" class="align-self-center" alt="cartitem"></a>
                             </div>
                             <div class="media-body mt-auto mb-auto col-8">
                                 <h5 class="name"><a th:href="|@{/product/detail}?bid=${cartItem.bookItem.id}|" th:text="${cartItem.bookItem.bookname}"></a></h5>
@@ -291,7 +291,7 @@
                 <div class="col-12">
                         <div th:each="book:${session.books}" class="media row">
                             <div class="img-holder ml-1 mr-2 col-4">
-                                <a href="javascript:void(0)"><img th:src="@{/asserts/bookimgs/}+${book.bookimg}" class="align-self-center" alt="cartitem"></a>
+                                <a href="javascript:void(0)"><img th:src="@{/}+${book.bookimg}" class="align-self-center" alt="cartitem"></a>
                             </div>
                             <div class="media-body mt-auto mb-auto col-8">
                                 <h5 class="name"><a th:href="|@{/product/detail}?bid=${book.id}|" th:text="${book.bookname}">So Sad Today</a></h5>

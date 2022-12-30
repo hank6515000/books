@@ -58,7 +58,7 @@
 <div  class="product-filter-nav mb-3 animated fadeInLeft delay-1s" style="display: flex;justify-content: center;align-items: center">
   <div class="card" style="width: 18rem;">
     <div id="showImg">
-      <img th:src="|/books/${user.headimgPath}|" class="card-img-top" alt="">
+      <img th:src="@{/}+${user.headimgPath}" class="card-img-top" alt="">
     </div>
     <div class="card-body text-center">
       <h5 class="card-title">檔案限制: .JPG, .PNG</h5>
@@ -139,7 +139,7 @@
                       <div class="row no-gutters" >
 
                         <div class="col-12 col-lg-4 product-detail-cart-image">
-                          <a class="shopping-product" v-bind:href="'product/detail?bid='+cart.bookItem.id"><img v-bind:src="'asserts/bookimgs/'+cart.bookItem.bookimg" alt="Generic placeholder image"></a>
+                          <a class="shopping-product" v-bind:href="'product/detail?bid='+cart.bookItem.id"><img :src="cart.bookItem.bookimg" alt="Generic placeholder image"></a>
                         </div>
                         <div class="col-12 col-lg-8 d-flex align-items-center">
                             <h4 class="product-name"><a>{{cart.bookItem.bookname}}</a></h4>
